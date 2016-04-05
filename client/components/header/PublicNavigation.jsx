@@ -7,7 +7,7 @@ export default class PublicNavigation extends Component {
 
       <div className="ui stackable menu">
         <a className="item" href="/">
-          <img src="/images/logo.png" /> Frolic
+          <img src="" /> Frolic
         </a>
         <div className="right menu">
           <a className="item" href="/pricing">

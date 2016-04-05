@@ -4,21 +4,37 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base             # Packages every Meteor app needs to have
-mobile-experience       # Packages for a great mobile UX
-mongo                   # The database Meteor supports right now
-blaze-html-templates    # Compile .html files into Meteor Blaze views
-reactive-var            # Reactive variable for tracker
-jquery                  # Helpful client-side library
-tracker                 # Meteor's client-side reactive programming library
+meteor-base               # Packages every Meteor app needs to have
+mobile-experience         # Packages for a great mobile UX
+mongo                     # The database Meteor supports right now
+blaze-html-templates      # Compile .html files into Meteor Blaze views
+reactive-var              # Reactive variable for tracker
+session                   # Client-side reactive dictionary for your app
+jquery                    # Helpful client-side library
+tracker                   # Meteor's client-side reactive programming library
 
-standard-minifier-css   # CSS minifier run for production mode
-standard-minifier-js    # JS minifier run for production mode
-es5-shim                # ECMAScript 5 compatibility for older browsers.
-ecmascript              # Enable ECMAScript2015+ syntax in app code
+standard-minifier-css     # CSS minifier run for production mode
+standard-minifier-js      # JS minifier run for production mode
+es5-shim                  # ECMAScript 5 compatibility for older browsers.
+ecmascript                # Enable ECMAScript2015+ syntax in app code
 
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
+#autopublish               # Publish all data to the clients (for prototyping)
+#insecure                  # Allow all DB writes from clients (for prototyping)
 
 
-kadira:flow-router
+kadira:flow-router        # Flow Router for project (Routes.jsx)
+meteortoys:allthings      # Ctrl-M to view mongo info.
+
+                          # Too access data from mongo
+                          # import TrackerReact from 'meteor/ultimatejs:tracker-react'
+ultimatejs:tracker-react  # Then inclose React.Component like this: TrackerReact(React.Component)
+
+accounts-ui
+accounts-password
+
+themeteorchef:bert        #fancy notifications
+
+check                     #check variables for security
+
+semantic:ui
+flemay:less-autoprefixer

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
-export default class Pricing extends Component {
+export default class Leagues extends Component {
+
   render() {
     return (
-      <div></div>
+      <div>Leagues</div>
     );
   }
 }

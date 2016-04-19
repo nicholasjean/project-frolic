@@ -5,9 +5,10 @@ export default class AuthenticatedNavigation extends Component {
   currentUserEmail() {
     return Meteor.user().emails[0].address;
   }
+
   render() {
     return (
       <div></div>
-    )
+    );
   }
 }

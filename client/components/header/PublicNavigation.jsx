@@ -21,6 +21,6 @@ export default class PublicNavigation extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

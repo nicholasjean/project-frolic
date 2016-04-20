@@ -58,8 +58,9 @@ export default class Register extends Component {
                 console.log('there was an error: ' + error.reason);
                 Bert.alert('Something went wrong...', 'danger', 'fixed-top', 'fa-frown-o');
               } else {
-                var params = { user: Meteor.user().emails[0].address };
-                FlowRouter.go('/dashboard', params);
+                console.log(Meteor.user());
+                var params = { user: Meteor.user()._id };
+                FlowRouter.go("dashboardRoute", params);
               };
             }
           );

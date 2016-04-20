@@ -41,8 +41,8 @@ export default class Login extends Component {
                 console.log('there was an error: ' + error.reason);
                 Bert.alert('Something went wrong...', 'danger', 'fixed-top', 'fa-frown-o');
               } else {
-                var params = { user: Meteor.user().emails[0].address };
-                FlowRouter.go('/dashboard', params);
+                var params = { user: Meteor.user()._id };
+                FlowRouter.go("dashboardRoute", params);
               }
             });
           },

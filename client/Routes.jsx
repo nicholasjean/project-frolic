@@ -43,6 +43,7 @@ FlowRouter.route('/sign_up', {
     },
 });
 FlowRouter.route('/dashboard/:user', {
+  name: 'dashboardRoute',
   action(params) {
       mount(DashboardLayout, {
         content: (<Dashboard />),
@@ -50,6 +51,7 @@ FlowRouter.route('/dashboard/:user', {
     },
 });
 FlowRouter.route('/dashboard/leagues/:user', {
+  name: 'dashboardLeaguesRoute',
   action(params) {
       mount(DashboardLayout, {
         content: (<DashboardLeagues />),
@@ -57,6 +59,7 @@ FlowRouter.route('/dashboard/leagues/:user', {
     },
 });
 FlowRouter.route('/dashboard/teams/:user', {
+  name: 'dashboardTeamsRoute',
   action(params) {
       mount(DashboardLayout, {
         content: (<DashboardTeams />),
@@ -64,6 +67,7 @@ FlowRouter.route('/dashboard/teams/:user', {
     },
 });
 FlowRouter.route('/dashboard/packages/:user', {
+  name: 'dashboardPackagesRoute',
   action(params) {
       mount(DashboardLayout, {
         content: (<DashboardPackages />),
@@ -71,6 +75,7 @@ FlowRouter.route('/dashboard/packages/:user', {
     },
 });
 FlowRouter.route('/dashboard/settings/:user', {
+  name: 'dashboarhSettingsRoute',
   action(params) {
       mount(DashboardLayout, {
         content: (<DashboardSettings />),

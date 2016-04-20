@@ -8,7 +8,7 @@ import Pricing from './pages/Pricing.jsx';
 import Login from './components/user/Login.jsx';
 import Register from './components/user/Register.jsx';
 import Dashboard from './components/dashboard/Dashboard.jsx';
-import DashboardLeagues from './components/dashboard/Leagues.jsx';
+import DashboardLeagues from './components/dashboard/leagues/Leagues.jsx';
 import DashboardTeams from './components/dashboard/Teams.jsx';
 import DashboardPackages from './components/dashboard/Packages.jsx';
 import DashboardSettings from './components/dashboard/Settings.jsx';

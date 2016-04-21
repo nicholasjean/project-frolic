@@ -6,7 +6,7 @@ var style = {
   main: {
     marginLeft: '120px',
     marginTop: '100px',
-    width: '80%',
+    width: '85%',
   },
 };
 export const DashboardLayout = ({ content }) => (

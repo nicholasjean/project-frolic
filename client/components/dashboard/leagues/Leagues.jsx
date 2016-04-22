@@ -23,19 +23,40 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
     return Leagues.find().fetch();
   }
 
+  _checkName(name) {
+    var ret = true;
+    leagues().map((league)=> {
+      if (league == name) {
+        ret = true;
+      } else {
+        ret = false;
+      }
+
+      return ret;
+    });
+  }
+
   componentDidMount () {
     $(document).ready(function () {
       $('.ui.modal').modal();
       $('select.dropdown').dropdown();
 
       $('.ui.form').form({
-          fields: {
+        fields: {
             name: {
               identifier: 'name',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please enter a name',
+                  prompt: 'Please enter a league name',
+                },
+                {
+                  type: 'minLength[3]',
+                  prompt: 'League name must be at least {ruleValue} characters',
+                },
+                {
+                  type: 'maxLength[24]',
+                  prompt: 'League name must be less than {ruleValue} characters',
                 },
               ],
             },
@@ -49,30 +70,42 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
               ],
             },
           },
-          onSuccess: function (e, fields) {
-            e.preventDefault();
-            console.log(fields);
-            Meteor.call('addLeagues', fields.name, fields.sport);
+        onSuccess: function (e, fields) {
+          e.preventDefault();
+          var check = false;
+          Leagues.find().fetch().map((league)=> {
+            if (league == fields.name && check == false) {
+              Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
+              check = true;
+            } else if (check == false) {
+              Meteor.call('addLeagues', fields.name, fields.sport);
+              check = true;
+            }
+          });
 
-          },
-        });
+          //Meteor.call('addLeagues', fields.name, fields.sport);
+        },
+      });
     });
   }
 
-  _checkName(league, name) {
-    var ret = true;
-    leagues().map((league)=> {
-      if (league == name) {
-        ret = true;
-      } else {
-        ret = false;
-      }
-
-      return ret;
-    });
-  }
+  // _handleSuccess(fields, e) {
+  //   console.log(fields);
+  //   leagues().map((league)=> {
+  //     if (league == fields.name) {
+  //       Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
+  //     } else {
+  //       Meteor.call('addLeagues', fields.name, fields.sport);
+  //     }
+  //   });
+  // }
 
   render() {
+    var style = {
+      padding: {
+        paddingTop: '50px',
+      },
+    };
     return (
       <div>
         <div className="ui container">
@@ -87,17 +120,15 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
                   <option value="golf">Golf</option>
                 </select>
               </div>
-              <div className="field">
-                <div className="ui positive small submit button">Create League</div>
-              </div>
+              <div className="ui positive small submit button">Create League</div>
             </div>
             <div className="ui error message"></div>
           </form>
         </div>
-        <div className="ui container">
+        <div className="ui container" style={style.padding}>
           <div className="ui middle aligned divided list">
-            {this.leagues().map((league)=>{
-              return <SingleLeague key={league._id} league={league} sport={sport} />
+            {this.leagues().map((league)=> {
+              return <SingleLeague key={league._id} league={league.league} sport={league.sport} />;
             })}
           </div>
         </div>

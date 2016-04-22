@@ -1,16 +1,16 @@
 Meteor.methods({
-	addLeagues(name, sport) {
+	addLeagues(name, sportName) {
 		Leagues.insert({
 			league: name,
-      sport: sport,
+      sport: sportName,
 		  createdAt: new Date(),
       user: Meteor.userId(),
 	  });
   },
-  addTeams(name, sport) {
+  addTeams(name, sportName) {
 		Teams.insert({
 			team: name,
-      sport: sport,
+      sport: sportName,
 		  createdAt: new Date(),
       user: Meteor.userId(),
 	  });

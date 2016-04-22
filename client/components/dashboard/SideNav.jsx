@@ -15,7 +15,7 @@ export default class SideNav extends Component {
     e.preventDefault();
 
     if (path && path != '') {
-      var params = { user: Meteor.user()._id };
+      var params = { user: Meteor.user().emails[0].address };
       FlowRouter.go(path, params);
     } else {
       Meteor.logout(() => FlowRouter.go('/'));

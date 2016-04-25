@@ -12,6 +12,7 @@ import DashboardLeagues from './components/dashboard/leagues/Leagues.jsx';
 import DashboardTeams from './components/dashboard/Teams.jsx';
 import DashboardPackages from './components/dashboard/Packages.jsx';
 import DashboardSettings from './components/dashboard/Settings.jsx';
+import DashboardLeague from './components/dashboard/leagues/League.jsx';
 
 FlowRouter.route('/', {
   action() {
@@ -55,6 +56,14 @@ FlowRouter.route('/dashboard/leagues/:user', {
   action(params) {
       mount(DashboardLayout, {
         content: (<DashboardLeagues />),
+      });
+    },
+});
+FlowRouter.route('/dashboard/leagues/:league', {
+  name: 'dashboardLeagueRoute',
+  action(params) {
+      mount(DashboardLayout, {
+        content: (<DashboardLeague key={params.key} league={params.league}/>),
       });
     },
 });

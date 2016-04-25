@@ -9,19 +9,25 @@ export default class SingleLeague extends Component {
     var path = 'img/avatar_placeholder_small.png';
     switch (this.props.sport) {
       case 'Golf':
-        path = 'img/avatar_placeholder_small.png';
+        path = './img/avatar_placeholder_small.png';
         break;
       default:
-        path = 'img/avatar_placeholder_small.png';
+        path = './img/avatar_placeholder_small.png';
     }
     return path;
+  }
+
+  _handleClick(e) {
+    e.preventDefault();
+    var params = { league: this.props.league, key: this.props.key };
+    FlowRouter.go('dashboardLeagueRoute', params);
   }
 
   render() {
     return (
         <div className="item">
           <div className="right floated content">
-            <div className="ui button">View</div>
+            <div className="ui button" onClick={this._handleClick.bind(this)}>View</div>
           </div>
           <img className="ui avatar image" src={this._imageSrc} />
           <div className="content">

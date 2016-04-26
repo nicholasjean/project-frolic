@@ -23,19 +23,6 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
     return Leagues.find().fetch();
   }
 
-  _checkName(name) {
-    var ret = true;
-    leagues().map((league)=> {
-      if (league == name) {
-        ret = true;
-      } else {
-        ret = false;
-      }
-
-      return ret;
-    });
-  }
-
   componentDidMount () {
     $(document).ready(function () {
       $('.ui.modal').modal();
@@ -72,33 +59,22 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
           },
         onSuccess: function (e, fields) {
           e.preventDefault();
-          var check = false;
-          Leagues.find().fetch().map((league)=> {
-            if (league == fields.name && check == false) {
-              Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
-              check = true;
-            } else if (check == false) {
-              Meteor.call('addLeagues', fields.name, fields.sport);
-              check = true;
-            }
-          });
+          var checkLeague = Leagues.find({
+            league:fields.name,
+            sport:fields.sport,
+          }).fetch();
 
-          //Meteor.call('addLeagues', fields.name, fields.sport);
+          if (Object.keys(checkLeague).length == 0) {
+            Meteor.call('addLeagues', fields.name, fields.sport);
+          } else if (Object.keys(checkLeague).length == 1) {
+            Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
+          } else {
+            //Something went wrong...
+          }
         },
       });
     });
   }
-
-  // _handleSuccess(fields, e) {
-  //   console.log(fields);
-  //   leagues().map((league)=> {
-  //     if (league == fields.name) {
-  //       Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
-  //     } else {
-  //       Meteor.call('addLeagues', fields.name, fields.sport);
-  //     }
-  //   });
-  // }
 
   render() {
     var style = {

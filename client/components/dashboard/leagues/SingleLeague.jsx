@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import LeagueMain from './LeagueMain.jsx';
+
 export default class SingleLeague extends Component {
   componentDidMount() {
 
@@ -19,7 +21,7 @@ export default class SingleLeague extends Component {
 
   _handleClick(e) {
     e.preventDefault();
-    var params = { league: this.props.league, key: this.props.key };
+    var params = { key: this.props.key, league: this.props.league };
     FlowRouter.go('dashboardLeagueRoute', params);
   }
 

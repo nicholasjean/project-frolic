@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class LeagueMain extends Component {
   componentDidMount() {
-
+    console.log('Mounted');
   }
 
   render() {

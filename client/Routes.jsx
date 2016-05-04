@@ -10,7 +10,7 @@ import Register from './components/user/Register.jsx';
 import Dashboard from './components/dashboard/Dashboard.jsx';
 import DashboardLeagues from './components/dashboard/leagues/Leagues.jsx';
 import DashboardTeams from './components/dashboard/Teams.jsx';
-import DashboardPackages from './components/dashboard/Packages.jsx';
+import DashboardPackages from './components/dashboard/PackagesMain.jsx';
 import DashboardSettings from './components/dashboard/Settings.jsx';
 import LeagueMain from './components/dashboard/leagues/LeagueMain.jsx';
 
@@ -59,7 +59,7 @@ FlowRouter.route('/dashboard/leagues/:user', {
       });
     },
 });
-FlowRouter.route('/dashboard/leagues/:league', {
+FlowRouter.route('/dashboard/league/:league', {
   name: 'leagueMainRoute',
   action(params) {
       mount(DashboardLayout, {

@@ -3,6 +3,11 @@ import React, {Component} from 'react';
 //import LeagueMain from './LeagueMain.jsx';
 
 export default class SingleLeague extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
   componentDidMount() {
 
   }
@@ -21,6 +26,7 @@ export default class SingleLeague extends Component {
 
   _handleClick(e) {
     e.preventDefault();
+    console.log('handleClick ' + this.props.league);
     var params = { key: this.props.key, league: this.props.league };
     FlowRouter.go('leagueMainRoute', params);
   }

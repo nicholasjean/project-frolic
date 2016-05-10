@@ -65,11 +65,12 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
           }).fetch();
 
           if (Object.keys(checkLeague).length == 0) {
-            Meteor.call('addLeagues', fields.name, fields.sport);
+            Meteor.call('addLeagues', fields.name, fields.sport, 'Y');
           } else if (Object.keys(checkLeague).length == 1) {
             Bert.alert(fields.name + ' already exist.', 'danger', 'fixed-top', 'fa-frown-o');
           } else {
             //Something went wrong...
+            Bert.alert('Woops...', 'danger', 'fixed-top', 'fa-frown-o');
           }
         },
       });
@@ -94,6 +95,10 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
                 <select className="ui dropdown" name="sport">
                   <option value="">Select Sport</option>
                   <option value="golf">Golf</option>
+                  <option value="golf">Baseball</option>
+                  <option value="golf">Football</option>
+                  <option value="golf">Bowling</option>
+                  <option value="golf">League of Legends</option>
                 </select>
               </div>
               <div className="ui positive small submit button">Create League</div>
@@ -101,10 +106,11 @@ export default class LeaguesComponent extends TrackerReact(React.Component) {
             <div className="ui error message"></div>
           </form>
         </div>
+        <div className="ui divider"></div>
         <div className="ui container" style={style.padding}>
           <div className="ui middle aligned divided list">
             {this.leagues().map((league)=> {
-              return <SingleLeague key={league._id} league={league.league} sport={league.sport} />;
+              return <SingleLeague key={league._id} league={league} />;
             })}
           </div>
         </div>

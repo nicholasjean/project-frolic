@@ -59,11 +59,11 @@ FlowRouter.route('/dashboard/leagues/:user', {
       });
     },
 });
-FlowRouter.route('/dashboard/league/:league', {
+FlowRouter.route('/dashboard/league/:key', {
   name: 'leagueMainRoute',
   action(params) {
       mount(DashboardLayout, {
-        content: (<LeagueMain key={params.key} league={params.league} />),
+        content: (<LeagueMain data={params.key} />),
       });
     },
 });
